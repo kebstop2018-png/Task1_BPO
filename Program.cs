@@ -1,5 +1,7 @@
 ﻿using System;
 
+//12 вариант
+
 namespace BPO_1
 {
     // Интерфейс
