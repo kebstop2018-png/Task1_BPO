@@ -73,17 +73,21 @@ namespace BPO_1
             balance += interest;
             Console.WriteLine($"Начислено процентов: {interest:F2} руб.");
         }
-
+        private void ConvertCurrency(decimal rate, string currencyName)
+        {
+            if (rate <= 0)
+                throw new ArgumentException($"Курс {currencyName} должен быть положительным!");
+            Console.WriteLine($"Эквивалент в {currencyName}: {(balance / rate):F2}");
+        }
+        
         public void ConvertToUSD(decimal usdRate)
         {
-            if (usdRate <= 0) throw new ArgumentException("Курс USD должен быть положительным!");
-            Console.WriteLine($"Эквивалент в USD: {(balance / usdRate):F2}");
+            ConvertCurrency(usdRate, "USD");
         }
-
+        
         public void ConvertToEUR(decimal eurRate)
         {
-            if (eurRate <= 0) throw new ArgumentException("Курс EUR должен быть положительным!");
-            Console.WriteLine($"Эквивалент в EUR: {(balance / eurRate):F2}");
+            ConvertCurrency(eurRate, "EUR");
         }
 
         public void PrintInWords()
